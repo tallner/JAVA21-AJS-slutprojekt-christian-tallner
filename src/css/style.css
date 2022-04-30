@@ -16,7 +16,7 @@
     grid-column: 1/3;
 
 }
-.products{
+.product-grid{
     border: 1px solid red;
     background-color: aquamarine;
 
@@ -24,7 +24,23 @@
     grid-column: 1/3;
 
     display: flex;
+    
+    flex-flow: row wrap;
+    /*justify-content: space-around;
+    */
+
+    gap: 10px;
+    gap: 10px 20px; /* row-gap column gap */
+    row-gap: 10px;
+    column-gap: 20px;
+    }
+.products{
+    border: 1px solid red;
+    background-color: aquamarine;
+  
+    
 }
+
 .shoppingcart{
     border: 1px solid red;
     background-color: aquamarine;

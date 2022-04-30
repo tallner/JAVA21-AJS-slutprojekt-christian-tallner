@@ -14,7 +14,7 @@ function App(){
                 loggedIn ? 
                 <>
                 <div className="login"><Login loggedIn={loggedIn} SetLoggedIn={SetLoggedIn} /></div>
-                <div className="products"><Products loggedIn={loggedIn} /></div>
+                <div className="product-grid"><Products loggedIn={loggedIn} /></div>
                 <div className="shoppingCart"><ShoppingCart loggedIn={loggedIn} /></div>
                 </> 
                 : 
