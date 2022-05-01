@@ -10,6 +10,7 @@ export default function ShoppingCart({productsToCart}){
     let summa = 0;
 
     shoppingList.push({prodId,nrOfItems});
+    
 
     function sum(name,id,nritems,price){
         summa += parseInt(nritems) * parseInt(price);
@@ -23,7 +24,7 @@ export default function ShoppingCart({productsToCart}){
     
 
     return (
-        <div>
+        <div className="shoppingcart">
             <h1>Shoppingcart</h1>
             <ol>
                 {
