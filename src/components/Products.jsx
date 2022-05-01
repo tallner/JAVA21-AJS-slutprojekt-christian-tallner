@@ -14,7 +14,7 @@ export default function Products({addProductsToCart}){
     }
 
     function handleChange({target}) {
-        setFormData({
+            setFormData({
             nrOfItems: target.value,
             prodId: target.id
         })
@@ -28,7 +28,7 @@ export default function Products({addProductsToCart}){
                 
             <div className="products">
                 <h1>{product.name}</h1>
-                <img src={product.img_src} alt="testimage" />
+                <img src={product.img_src} alt="testimage" width="150" />
                 <h2>Price: {product.price}$</h2>
                 <form>
                     <input id={product.id} type="number" placeholder="Number of items" onChange={handleChange}/>

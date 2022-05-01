@@ -1,56 +1,52 @@
 import {useState} from "react";
 import { productList } from "../modules/productList";
 
-let sum = 0;
+
 let shoppingList = [];
 
 export default function ShoppingCart({productsToCart}){
-    //const [sum, setSum] = useState(0);
-
-    const {prodId, nrOfItems} = productsToCart;
-   // shoppingList.push({prodId,nrOfItems});
     
-    function calcSum(product){
-        console.log('Price is:', product.price*nrOfItems);
+    const {prodId, nrOfItems} = productsToCart;
+    let summa = 0;
 
-        
-        //     console.log('content id:', content.ShoppingCart.id);
-        shoppingList.map(content =>
-            content.product.id==prodId ?
-        //    console.log('id exists ',content.product.id) : 
-            content.product.nrOfItems += nrOfItems : 
-            shoppingList.push({product,nrOfItems})   
-        //    console.log('id not exist ',content.product.id)
-)
+    shoppingList.push({prodId,nrOfItems});
 
-
-        if (shoppingList.length==0) {
-            shoppingList.push({product,nrOfItems});
-        }
-
-        console.log('id exists ',shoppingList.length);
-        
-        
-        sum += product.price*nrOfItems;
-        console.log('sum ',sum);
-        
-  
-
-       console.log('shoppinglist ',shoppingList);
-        
+    function sum(name,id,nritems,price){
+        summa += parseInt(nritems) * parseInt(price);
+        return <li> {name} : {id} : {nritems} : {price} </li>
     }
 
-    productList.map(content =>
-        content.id==prodId ? calcSum(content): false       
-    )
+    function checkOut(){
+        shoppingList = [];
+        sum('0','0','0','0');
+    }
     
-    
+
     return (
         <div>
-            <h1>shoppingcart</h1>
-            <h2>{prodId}</h2>
-            <h2>{nrOfItems}</h2>
-            <h2>{sum}</h2>
+            <h1>Shoppingcart</h1>
+            <ol>
+                {
+                shoppingList.map(shoppingItem =>
+                    productList.map(
+                        content =>
+                        content.id==shoppingItem.prodId ?
+                        sum(content.name,shoppingItem.prodId,shoppingItem.nrOfItems,content.price)
+                        :
+                       false
+                    )  
+                )
+                }
+                <h3>
+                    Sum: {summa}$
+                    <br />
+                    <button onClick={checkOut}> Checkout </button>
+                    
+                </h3>
+                
+            </ol>
+            
         </div>
+        
     )
 }
