@@ -7,6 +7,11 @@ import ShoppingCart from "./components/ShoppingCart";
 
 function App(){
     const [loggedIn, SetLoggedIn] = useState(false);
+    const [productsToCart, setProductsToCart] = useState({});
+
+    function updateCart(buyStuff){
+        setProductsToCart(buyStuff);
+    }
     
     return (
         <div className="shop">
@@ -14,8 +19,8 @@ function App(){
                 loggedIn ? 
                 <>
                 <div className="login"><Login loggedIn={loggedIn} SetLoggedIn={SetLoggedIn} /></div>
-                <div className="product-grid"><Products loggedIn={loggedIn} /></div>
-                <div className="shoppingCart"><ShoppingCart loggedIn={loggedIn} /></div>
+                <div className="product-grid"><Products addProductsToCart={updateCart} /></div>
+                <div className="shoppingCart"><ShoppingCart productsToCart={productsToCart} /></div>
                 </> 
                 : 
                 <>

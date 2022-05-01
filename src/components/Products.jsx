@@ -1,16 +1,23 @@
 import {useState} from "react";
 import { productList } from "../modules/productList";
 
-export default function Products(){
-    let nrOfItems = 0;
+export default function Products({addProductsToCart}){
+
+    const [formData, setFormData] = useState({
+        nrOfItems: '',
+        prodId: ''
+    });
 
     function addCart(event){
         event.preventDefault();
-        console.log(nrOfItems);
-        console.log('id: ', event.target.id);
+        addProductsToCart(formData);
     }
-    function handleChange(event) {
-        nrOfItems = event.target.value;
+
+    function handleChange({target}) {
+        setFormData({
+            nrOfItems: target.value,
+            prodId: target.id
+        })
     }
    
    
@@ -24,7 +31,7 @@ export default function Products(){
                 <img src={product.img_src} alt="testimage" />
                 <h2>Price: {product.price}$</h2>
                 <form>
-                    <input type="number" placeholder="Number of items" onChange={handleChange}/>
+                    <input id={product.id} type="number" placeholder="Number of items" onChange={handleChange}/>
                     <button id={product.id} onClick={addCart}> Add to cart </button>
                 </form>
             </div>
