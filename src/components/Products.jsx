@@ -2,8 +2,16 @@ import {useState} from "react";
 import { productList } from "../modules/productList";
 
 export default function Products(){
+    let nrOfItems = 0;
 
-    console.log(productList);
+    function addCart(event){
+        event.preventDefault();
+        console.log(nrOfItems);
+        console.log('id: ', event.target.id);
+    }
+    function handleChange(event) {
+        nrOfItems = event.target.value;
+    }
    
    
     return (
@@ -16,10 +24,9 @@ export default function Products(){
                 <img src={product.img_src} alt="testimage" />
                 <h2>Price: {product.price}$</h2>
                 <form>
-                    <input type="number" placeholder="Number of items" />
-                    <button> Add to cart </button>
+                    <input type="number" placeholder="Number of items" onChange={handleChange}/>
+                    <button id={product.id} onClick={addCart}> Add to cart </button>
                 </form>
-                
             </div>
             )
         )
