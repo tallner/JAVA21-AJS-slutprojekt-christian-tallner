@@ -23,7 +23,7 @@ function App(){
                 <>
                 {console.log('renderAPP')}
                 <div className="login"><Login loggedIn={loggedIn} SetLoggedIn={SetLoggedIn} /></div>
-                <div className="product-grid"><Products addProductsToCart={setProductsToCart} /></div>
+                <div className="product-grid"><Products addProductsToCart={updateCart} /></div>
                 <div className="shoppingCart"><ShoppingCart productsToCart={productsToCart} /></div>
                 </> 
                 : 

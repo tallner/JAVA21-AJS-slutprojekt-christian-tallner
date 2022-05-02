@@ -3,14 +3,23 @@
 -Kvar att göra-
 Vill använda fler av funktionerna vi lärt oss men har svårt att hitta användningsområdet
 
+Startsida
 Username inte tillagt
 
+Shopsida
+Username
 Goto cart inte tillagd
+Cart number of items saknas
 
-Lägg till en remove from cart
+Cartsida
+Username
+Logout
+Köpknapp/Checkout alert
+Lägg till en remove from cart --> Min VG funktion
 
 
 -Buggar-
+Login/Logout text på knapp fungerar inte
 --Warning: Each child in a list should have a unique "key" prop
 
 --Ta bort möjlighet för att få negativa antal

@@ -12,22 +12,17 @@ export default function ShoppingCart({productsToCart}){
 
     console.log('renderCart')
 
-    console.log('ShoppingCart',productsToCart);
-
     shoppingList.push({prodId,nrOfItems});
     
 
     function sum(name,id,nritems,price){
         summa += parseInt(nritems) * parseInt(price);
-        return <li key={id}> {name} : {id} : {nritems} : {price} </li>
+        return <li key={id}> {name} : {id} : {nritems} : {price} </li>;
     }
 
-    function checkOut(){
-        
+    function checkOut(){        
         shoppingList = [];
-        
-        
-        console.log('Checkout', sum('0','0','0','0'), shoppingList);
+        return sum('0',0,0,'0');
     }
     
 
