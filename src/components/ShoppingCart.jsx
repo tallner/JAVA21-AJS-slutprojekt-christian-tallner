@@ -7,19 +7,27 @@ let shoppingList = [];
 export default function ShoppingCart({productsToCart}){
     
     const {prodId, nrOfItems} = productsToCart;
+    
     let summa = 0;
+
+    console.log('renderCart')
+
+    console.log('ShoppingCart',productsToCart);
 
     shoppingList.push({prodId,nrOfItems});
     
 
     function sum(name,id,nritems,price){
         summa += parseInt(nritems) * parseInt(price);
-        return <li> {name} : {id} : {nritems} : {price} </li>
+        return <li key={id}> {name} : {id} : {nritems} : {price} </li>
     }
 
     function checkOut(){
+        
         shoppingList = [];
-        sum('0','0','0','0');
+        
+        
+        console.log('Checkout', sum('0','0','0','0'), shoppingList);
     }
     
 

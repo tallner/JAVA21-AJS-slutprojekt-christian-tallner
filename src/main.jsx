@@ -9,7 +9,10 @@ function App(){
     const [loggedIn, SetLoggedIn] = useState(false);
     const [productsToCart, setProductsToCart] = useState({});
 
+    console.log('App',productsToCart);
+
     function updateCart(buyStuff){
+        console.log('buyStuff',buyStuff);
         setProductsToCart(buyStuff);
     }
     
@@ -18,8 +21,9 @@ function App(){
             {
                 loggedIn ? 
                 <>
+                {console.log('renderAPP')}
                 <div className="login"><Login loggedIn={loggedIn} SetLoggedIn={SetLoggedIn} /></div>
-                <div className="product-grid"><Products addProductsToCart={updateCart} /></div>
+                <div className="product-grid"><Products addProductsToCart={setProductsToCart} /></div>
                 <div className="shoppingCart"><ShoppingCart productsToCart={productsToCart} /></div>
                 </> 
                 : 

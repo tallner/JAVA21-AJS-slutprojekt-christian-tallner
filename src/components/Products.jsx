@@ -3,14 +3,19 @@ import { productList } from "../modules/productList";
 
 export default function Products({addProductsToCart}){
 
+    console.log('renderProducts')
+
     const [formData, setFormData] = useState({
-        nrOfItems: '',
+        nrOfItems: 0,
         prodId: ''
     });
 
     function addCart(event){
         event.preventDefault();
-        addProductsToCart(formData);
+        if (formData.nrOfItems > 0){
+            addProductsToCart(formData);
+            console.log('Products addCart', formData)
+        }
     }
 
     function handleChange({target}) {
@@ -26,12 +31,12 @@ export default function Products({addProductsToCart}){
         productList.map(product =>
             (
                 
-            <div className="products">
+            <div className="products" key={product.id}>
                 <h1>{product.name}</h1>
                 <img src={product.img_src} alt="testimage" width="150" />
                 <h2>Price: {product.price}$</h2>
                 <form>
-                    <input id={product.id} type="number" placeholder="Number of items" onChange={handleChange}/>
+                    <input id={product.id} type="number" min="0" placeholder="Number of items" onChange={handleChange}/>
                     <button id={product.id} onClick={addCart}> Add to cart </button>
                 </form>
             </div>
