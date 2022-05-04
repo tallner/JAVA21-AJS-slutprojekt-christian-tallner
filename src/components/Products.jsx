@@ -1,8 +1,7 @@
 import {useState} from "react";
 import { productList } from "../modules/productList";
 
-export default function Products({updateCart}){
-    console.log('products');
+export default function Products({updateCart, productsToCart, setNrElementsCart}){
 
     const [formData, setFormData] = useState({
         nrOfItems: 0,
@@ -12,9 +11,13 @@ export default function Products({updateCart}){
     function addCart(event){
         event.preventDefault();
         if (formData.nrOfItems > 0){
-            updateCart(formData);
-            console.log('click', formData);
+            productsToCart.push(formData);
+            updateCart(productsToCart);
+            nrItemsInCart();
         }
+        
+        
+        
     }
 
     function handleChange({target}) {
@@ -22,7 +25,12 @@ export default function Products({updateCart}){
             nrOfItems: target.value,
             prodId: target.id
         })
-        console.log(formData);
+    }
+
+    function nrItemsInCart(){
+        let nrElements = 0;
+        productsToCart.map(p => (nrElements+=parseInt(p.nrOfItems)))
+        setNrElementsCart(nrElements);
     }
    
    

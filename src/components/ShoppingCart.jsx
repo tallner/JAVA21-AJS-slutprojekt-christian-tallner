@@ -1,30 +1,21 @@
-import {useState} from "react";
 import { productList } from "../modules/productList";
 
-
-let shoppingList = [];
-
-export default function ShoppingCart({productsToCart, SetPage, SetLoggedIn}){
+export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  updateCart}){
     
-    const {prodId, nrOfItems} = productsToCart;
-    
-    let summa = 0;
-
-    shoppingList.push({prodId,nrOfItems});
-   
+    let totalSum = 0;
 
     function sum(name,id,nritems,price){
-        summa += parseInt(nritems) * parseInt(price);
-        return <li key={id}> {name} : {id} : {nritems} : {price} </li>;
+        totalSum += parseInt(nritems) * parseInt(price);
+        return  <li key={id}> 
+                    {name}. {nritems}pcs. {price}$/pc 
+                </li>;
     }
 
     function checkOut(){        
-        shoppingList = [];
-        sum('0',0,0,'0');
+        updateCart([{}]);
         alert('Done shopping');
-        SetLoggedIn(false);
-        SetPage('pageLogin');
-
+        setLoggedIn(false);
+        setPage('pageLogin');
     }
     
 
@@ -33,7 +24,7 @@ export default function ShoppingCart({productsToCart, SetPage, SetLoggedIn}){
             <h1>Shoppingcart</h1>
             <ol>
                 {
-                shoppingList.map(shoppingItem =>
+                productsToCart.map(shoppingItem =>
                     productList.map(
                         content =>
                         content.id==shoppingItem.prodId ?
@@ -44,7 +35,7 @@ export default function ShoppingCart({productsToCart, SetPage, SetLoggedIn}){
                 )
                 }
                 <h3>
-                    Sum: {summa}$
+                    Sum: {totalSum}$
                     <br />
                     <button onClick={checkOut}> Checkout </button>
                     

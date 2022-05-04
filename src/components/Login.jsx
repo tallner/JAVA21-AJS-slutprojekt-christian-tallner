@@ -1,17 +1,17 @@
 import {useState} from "react";
 import { cartButton } from "../modules/cartButton";
 
-export default function Login({SetLoggedIn, loggedIn, SetPage}){
+export default function Login({setLoggedIn, loggedIn, setPage, nrElementsCart}){
     const [btnText, setBtnTxt] = useState('LogIn');
     
     function handleLogin(){
-         SetLoggedIn(!loggedIn);
+        setLoggedIn(!loggedIn);
         loggedIn ? (setBtnTxt('LogIn')) : (setBtnTxt('LogOut'));
-        loggedIn ? (SetPage('pageLogin')) : (SetPage('pageShop'));
+        loggedIn ? (setPage('pageLogin')) : (setPage('pageShop'));
     }
 
     function showCart(){
-        SetPage('pageCart');
+        setPage('pageCart');
     }
 
     return (<>
@@ -19,6 +19,6 @@ export default function Login({SetLoggedIn, loggedIn, SetPage}){
 
        <button onClick={handleLogin}>{btnText}</button>
 
-       {loggedIn ? cartButton(showCart,55) : false}
+       {loggedIn ? cartButton(showCart,nrElementsCart) : false}
     </>)
 }
