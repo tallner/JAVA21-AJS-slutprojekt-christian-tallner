@@ -1,6 +1,6 @@
 import { productList } from "../modules/productList";
 
-export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  updateCart}){
+export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  setProductsToCart, setNrElementsCart}){
     
     let totalSum = 0;
 
@@ -12,10 +12,11 @@ export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  upd
     }
 
     function checkOut(){        
-        updateCart([{}]);
+        setProductsToCart([]);
         alert('Done shopping');
         setLoggedIn(false);
         setPage('pageLogin');
+        setNrElementsCart(0);
     }
     
 

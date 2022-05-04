@@ -4,7 +4,7 @@
 Vill använda fler av funktionerna vi lärt oss men har svårt att hitta användningsområdet
 
 Startsida
-Username inte tillagt
+Username
 
 Shopsida
 Username

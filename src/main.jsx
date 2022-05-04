@@ -10,9 +10,6 @@ function App(){
     const [page, setPage] = useState('pageLogin');
     const [nrElementsCart, setNrElementsCart] = useState(0);
 
-    function updateCart(addProducts){
-        setProductsToCart(addProducts);
-    }
 
     function renderSwitch() {
         let returnText = '';
@@ -20,8 +17,8 @@ function App(){
             case 'pageShop':
                 returnText = (
                 <div className="shop">
-                    <div className="login"><Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setPage={setPage} nrElementsCart={nrElementsCart} /></div>
-                    <div className="product-grid"><Products updateCart={updateCart} productsToCart={productsToCart} setNrElementsCart={setNrElementsCart} /></div>
+                    <div className="login"><Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} setPage={setPage} nrElementsCart={nrElementsCart} setProductsToCart={setProductsToCart} setNrElementsCart={setNrElementsCart} /></div>
+                    <div className="product-grid"><Products setProductsToCart={setProductsToCart} productsToCart={productsToCart} setNrElementsCart={setNrElementsCart} /></div>
                 </div>)
                 break;
 
@@ -37,7 +34,7 @@ function App(){
             case 'pageCart':
                 returnText = (
                 <div className="shop">
-                    <div className="shoppingCart"><ShoppingCart productsToCart={productsToCart} setLoggedIn={setLoggedIn} setPage={setPage} updateCart={updateCart} /></div>
+                    <div className="shoppingCart"><ShoppingCart productsToCart={productsToCart} setLoggedIn={setLoggedIn} setPage={setPage} setProductsToCart={setProductsToCart} setNrElementsCart={setNrElementsCart} /></div>
                 </div>)
                 break;
 
