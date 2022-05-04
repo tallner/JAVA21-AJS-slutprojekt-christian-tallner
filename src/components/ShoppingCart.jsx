@@ -1,6 +1,6 @@
 import { productList } from "../modules/productList";
 
-export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  setProductsToCart, setNrElementsCart}){
+export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  setProductsToCart, setNrElementsCart, userName}){
     
     let totalSum = 0;
 
@@ -22,7 +22,7 @@ export default function ShoppingCart({productsToCart, setPage, setLoggedIn,  set
 
     return (
         <div className="shoppingcart">
-            <h1>Shoppingcart</h1>
+            <h1>{userName}´s shoppingcart</h1>
             <ol>
                 {
                 productsToCart.map(shoppingItem =>

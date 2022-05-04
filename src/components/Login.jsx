@@ -1,10 +1,12 @@
 import {useState} from "react";
 import { cartButton } from "../modules/cartButton";
 
-export default function Login({setLoggedIn, loggedIn, setPage, nrElementsCart, setProductsToCart, setNrElementsCart}){
+export default function Login({setLoggedIn, loggedIn, setPage, nrElementsCart, setProductsToCart, setNrElementsCart, setUserName, userName}){
+    let name = '';
     const [btnText, setBtnTxt] = useState('LogIn');
     
-    function handleLogin(){
+    function handleLogin(e){
+        e.preventDefault();
         setLoggedIn(!loggedIn);
         //loggedIn ? (setBtnTxt('LogIn')) : (setBtnTxt('LogOut'));
         //loggedIn ? (setPage('pageLogin')) : (setPage('pageShop'));
@@ -19,6 +21,7 @@ export default function Login({setLoggedIn, loggedIn, setPage, nrElementsCart, s
         } else {
             setBtnTxt('LogOut');
             setPage('pageShop');
+            setUserName(name);
         }
     }
 
@@ -27,11 +30,34 @@ export default function Login({setLoggedIn, loggedIn, setPage, nrElementsCart, s
         setPage('pageCart');
     }
 
-    return (<>
-       {loggedIn ? <h1>Logged In</h1>:<h1>Logged Out</h1>}
+    function handleChange(event) {
+        name = event.target.value;
+    }
 
-       <button onClick={handleLogin}>{btnText}</button>
+    function condRend(){
+        const cartBut = cartButton(showCart,nrElementsCart);
+        let returnText = [];
+        
+        if (loggedIn){
+            returnText[0] = <h2>{userName}</h2>;
+            returnText[1] = cartButton(showCart,nrElementsCart);
+            returnText[2] = <br />;
+            returnText[3] = <button onClick={handleLogin}>{btnText}</button>;
+            
+        }else{
+            returnText[0] =
+            <form>
+                <input type="text" placeholder="Name" onChange={handleChange}></input>
+                <button onClick={handleLogin}>{btnText}</button>
+            </form>;
 
-       {loggedIn ? cartButton(showCart,nrElementsCart) : false}
+        }
+        return returnText;
+    }
+
+    return (<>{condRend()}
+       
+
+       
     </>)
 }

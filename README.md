@@ -4,14 +4,12 @@
 Vill använda fler av funktionerna vi lärt oss men har svårt att hitta användningsområdet
 
 Startsida
-Username
+
 
 Shopsida
-Username
+
 
 Cartsida
-Username
-Logout
 Summera alla av liknande typ i carten
 Lägg till en remove from cart --> Min VG funktion
 
