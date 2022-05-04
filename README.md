@@ -19,16 +19,21 @@ Lägg till en remove from cart --> Min VG funktion
 
 
 -Buggar-
-Login/Logout text på knapp fungerar inte
---Warning: Each child in a list should have a unique "key" prop
+--Login/Logout text på knapp fungerar inte (längre?) --> clean
 
---Ta bort möjlighet för att få negativa antal
+Shopping cart renderas inte när jag lägger den i Login.jsx
+--> cond rend i main
+
+--Warning: Each child in a list should have a unique "key" prop --> listorna fick en key=id
+
+--Ta bort möjlighet för att få negativa antal --> min=0 i input
 
 Summera alla av liknande typ i carten
 
---Inte kunna lägga till antal 0 i carten
+--Inte kunna lägga till antal 0 i carten --> condition i products för if (formData.nrOfItems > 0){
 
 Varför funkar köpknappen bara 1 ggn? sen måste man ändra antal innan den fungerar igen
+-> måste ske en förändring i state för att react ska rendera
 
 När jag trycker på knappen check out i kundvagnen så vill jag nolla allt, men får det inte att fungera. Knappens on-click verkar inte anropa den funktionen eller renderar inte sidan igen.
 

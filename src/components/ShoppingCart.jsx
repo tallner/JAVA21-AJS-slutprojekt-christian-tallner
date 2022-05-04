@@ -4,16 +4,14 @@ import { productList } from "../modules/productList";
 
 let shoppingList = [];
 
-export default function ShoppingCart({productsToCart}){
+export default function ShoppingCart({productsToCart, SetPage, SetLoggedIn}){
     
     const {prodId, nrOfItems} = productsToCart;
     
     let summa = 0;
 
-    console.log('renderCart')
-
     shoppingList.push({prodId,nrOfItems});
-    
+   
 
     function sum(name,id,nritems,price){
         summa += parseInt(nritems) * parseInt(price);
@@ -22,7 +20,11 @@ export default function ShoppingCart({productsToCart}){
 
     function checkOut(){        
         shoppingList = [];
-        return sum('0',0,0,'0');
+        sum('0',0,0,'0');
+        alert('Done shopping');
+        SetLoggedIn(false);
+        SetPage('pageLogin');
+
     }
     
 
