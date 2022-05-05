@@ -11,7 +11,7 @@ export default function Products(props){
 
     function addCart(event){
         event.preventDefault();
-        if (formData.nrOfItems > 0){
+        if ((formData.nrOfItems > 0) && (event.target.id == formData.prodId)){ //button id matches form input id?
             props.productsToCart.push(formData);
             props.setProductsToCart(props.productsToCart);
             nrItemsInCart();
