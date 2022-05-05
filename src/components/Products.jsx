@@ -12,7 +12,7 @@ export default function Products(props){
     function addCart(event){
         event.preventDefault();
         if (formData.nrOfItems > 0){
-            productsToCart.push(formData);
+            props.productsToCart.push(formData);
             props.setProductsToCart(props.productsToCart);
             nrItemsInCart();
         }

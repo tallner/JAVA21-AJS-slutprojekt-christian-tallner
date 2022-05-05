@@ -34,12 +34,12 @@ Lägg till en remove from cart --> Min VG funktion
 
 
 -AddOns later-
-Styling
 Remove items from cart
+Product information page when clicked
 Categories
 Search
-User Login 
-Product information page when clicked
 Favorites
 If item out of stock, send notice when in stock again
 Price deals (user deales, bundles aso) 
+Styling
+
