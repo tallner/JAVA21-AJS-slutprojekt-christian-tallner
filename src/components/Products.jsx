@@ -1,7 +1,8 @@
 import {useState} from "react";
 import { productList } from "../modules/productList";
 
-export default function Products({setProductsToCart, productsToCart, setNrElementsCart}){
+//props {setProductsToCart, productsToCart, setNrElementsCart}
+export default function Products(props){
 
     const [formData, setFormData] = useState({
         nrOfItems: 0,
@@ -12,7 +13,7 @@ export default function Products({setProductsToCart, productsToCart, setNrElemen
         event.preventDefault();
         if (formData.nrOfItems > 0){
             productsToCart.push(formData);
-            setProductsToCart(productsToCart);
+            props.setProductsToCart(props.productsToCart);
             nrItemsInCart();
         }
     }
@@ -26,8 +27,8 @@ export default function Products({setProductsToCart, productsToCart, setNrElemen
 
     function nrItemsInCart(){
         let nrElements = 0;
-        productsToCart.map(p => (nrElements+=parseInt(p.nrOfItems)))
-        setNrElementsCart(nrElements);
+        props.productsToCart.map(p => (nrElements+=parseInt(p.nrOfItems)))
+        props.setNrElementsCart(nrElements);
     }
    
    
