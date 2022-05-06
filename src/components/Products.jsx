@@ -5,23 +5,22 @@ import { productList } from "../modules/productList";
 export default function Products(props){
 
     const [formData, setFormData] = useState({
-        nrOfItems: 0,
-        prodId: ''
+        prodId: 0,
+        nrOfItems: 0
     });
 
     function addCart(event){
         event.preventDefault();
         if ((formData.nrOfItems > 0) && (event.target.id == formData.prodId)){ //button id matches form input id?
-            props.productsToCart.push(formData);
-            props.setProductsToCart(props.productsToCart);
+            addProdToShoppinglist(formData);
             nrItemsInCart();
         }
     }
 
     function handleChange({target}) {
             setFormData({
-            nrOfItems: target.value,
-            prodId: target.id
+                prodId: target.id,
+                nrOfItems: parseInt(target.value)
         })
     }
 
@@ -30,6 +29,19 @@ export default function Products(props){
         props.productsToCart.map(p => (nrElements+=parseInt(p.nrOfItems)))
         props.setNrElementsCart(nrElements);
     }
+
+    function addProdToShoppinglist(input){
+        const index = props.productsToCart.findIndex(f => f.prodId===input.prodId);
+        if (index == -1) {
+            props.productsToCart.push(input);
+        }else{
+            props.productsToCart[index].nrOfItems += parseInt(input.nrOfItems);
+        }
+
+        props.productsToCart.sort((a, b) => a.prodId-b.prodId);
+        props.setProductsToCart(props.productsToCart);
+    }
+
    
    
     return (
