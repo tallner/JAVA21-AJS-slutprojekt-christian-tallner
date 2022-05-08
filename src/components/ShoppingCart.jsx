@@ -5,10 +5,11 @@ export default function ShoppingCart(props){
     
     let totalSum = 0;
 
-    function sum(name,id,nritems,price){
+    function sum(name,id,nritems,price,index){
+        console.log('index',index);
         totalSum += parseInt(nritems) * parseInt(price);
         return  <li key={id}>{name}.{nritems}pcs.{price}$/pc
-                    <button>Delete</button>
+                    <button id={index} onClick={removeFromCart}> Delete </button>
                 </li>;
     }
 
@@ -19,7 +20,12 @@ export default function ShoppingCart(props){
         props.setPage('pageLogin');
         props.setNrElementsCart(0);
     }
-    
+
+    function removeFromCart(e) {
+        props.productsToCart.splice(parseInt(e.target.id),1);
+        props.setNrElementsCart(props.productsToCart.length);
+        props.setProductsToCart(props.productsToCart);
+    }
 
     return (
         <div className="shoppingcart">
